@@ -3,12 +3,19 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App'; //App.js를 import해서 App 라는 이름으로 사용하기
 import reportWebVitals from './reportWebVitals';
+import { RouterProvider } from 'react-router-dom'; 
+//폴더명까지만 import하면 default로 index.jsx가 import된다.
+import router from './router';
+import axios from 'axios';
+
+// axios의 요청경로 앞에 붙을 base url설정 (context path)
+//axios.defaults.baseURL="/spring12"
 
 // id가 root인 div안에 App.js에서 리턴해준 component로 채우기
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App />
+    <RouterProvider router={router}/>
   </React.StrictMode>
 );
 

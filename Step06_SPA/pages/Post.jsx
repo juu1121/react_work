@@ -14,7 +14,7 @@ function Post(props) {
 
     //페이지 요청해서 출력하는 함수
     const refresh = (pageNum)=>{
-        axios.get("/posts?pageNum="+pageNum)
+        axios.get("/v3/posts?pageNum="+pageNum)
         .then(res=>{
             //서버에서 응답한 data는 res.data에 들어있다.
             console.log(res)
@@ -81,7 +81,7 @@ function Post(props) {
                             </td>
                             <td>
                                 <button onClick={()=>{
-                                    axios.delete(`/posts/${item.id}`)
+                                    axios.delete(`/v3/posts/${item.id}`)
                                     .then(res=>{
                                         alert(res.data.id+"번 글을 삭제했습니다.")
                                         //현재페이지정보가 다시 출력되도록한다=>2가지 방법이있음음

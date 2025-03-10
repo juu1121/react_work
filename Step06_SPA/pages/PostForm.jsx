@@ -10,7 +10,7 @@ function PostForm(props) {
     return (
         <>
             <h1>새 post 작성폼</h1>
-            <Form action="/posts" method="post" onSubmit={(e)=>{
+            <Form action="/v3/posts" method="post" onSubmit={(e)=>{
                 e.preventDefault();
                 const url=e.target.action;
                 //폼에 입력한 내용을 이용해서 FormData객체를 생성한다.
@@ -36,8 +36,8 @@ function PostForm(props) {
                 </FloatingLabel>
                 <Button type="submit" variant="success">저장</Button>
             </Form>
-
-            <form action="/posts" method="post" onSubmit={(e)=>{
+{/* 
+            <form action="/v3/posts" method="post" onSubmit={(e)=>{
                 e.preventDefault();
                 const url=e.target.action;
                 //폼에 입력한 내용을 이용해서 FormData객체를 생성한다.
@@ -65,6 +65,7 @@ function PostForm(props) {
                 </div>
                 <button type="submit">저장</button>
             </form>
+*/}             
         </>
     );
 }

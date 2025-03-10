@@ -1,4 +1,4 @@
-import { createBrowserRouter } from "react-router-dom";
+import { createBrowserRouter, createHashRouter } from "react-router-dom";
 import Game from "../pages/Game";
 import Home from "../pages/Home";
 import Study from "../pages/Study";
@@ -10,16 +10,19 @@ import PostUpdateForm from "../pages/PostUpdateForm";
 //라우팅 정보를 배열에 미리 저장해둔다.
 //임폴트해서 단독요소로 만들어둔다.
 const routes=[
+    //spring boot 서버에 넣어서 실행하면 최초 로딩될때 /index.html 경로로 로딩된다.
+    //그럴때도 Home 컴포넌트가 활성화 될 수 있도록 라우트 정보를 추가한다.
+    {path:"/index.html", element:<Home/>},
     {path:"/", element:<Home/>},
     {path:"/game", element:<Game/>},
     {path:"/study", element:<Study/>},
     {path:"/posts", element:<Post/>},
     {path:"/posts/new", element:<PostForm/>},
-    {path:"/posts/:ids/edit", element:<PostUpdateForm/>}
+    {path:"/posts/:id/edit", element:<PostUpdateForm/>}
 ];
 
 //export해줄 router 객체를 만든다.
-const router = createBrowserRouter([{
+const router = createHashRouter([{
     path:"/",
     element:<App/>,
     children: routes.map((route)=>{
