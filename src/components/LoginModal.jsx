@@ -25,6 +25,10 @@ function LoginModal(props) {
         axios.post("/auth", state)
         .then(res=>{
             console.log(res.data);
+            
+            //axios 의 요청해더에 자동으로 토큰이 포함되도록한다.
+            axios.defaults.headers.common["Authorization"]=res.data;
+            
             //토큰을 localStorage에 저장
             localStorage.token = res.data;
             //토큰을 디코딩해서 userName을 얻어온다.
