@@ -8,6 +8,8 @@ import UserDetail from "../pages/UserDetail";
 import ProtectedRoute from "../components/ProtectedRoute";
 import UserUpdateForm from "../pages/UserUpdateForm";
 import UserPwdUpdateForm from "../pages/UserPwdUpdateForm";
+import PostFrom from "../pages/PostFrom";
+import PostDetail from "../pages/PostDetail";
 
 
 //임폴트해서 단독요소로 만들어둔다.
@@ -19,7 +21,10 @@ const routes=[
     {path:"/posts", element:<Post/>},
     {path:"/user/detail", element: <ProtectedRoute><UserDetail/></ProtectedRoute>},
     {path:"/user/edit", element:<ProtectedRoute><UserUpdateForm/></ProtectedRoute>},
-    {path:"/user/password/edit", element:<ProtectedRoute><UserPwdUpdateForm/></ProtectedRoute>}
+    {path:"/user/password/edit", element:<ProtectedRoute><UserPwdUpdateForm/></ProtectedRoute>},
+    {path:"/posts/new", element:<ProtectedRoute><PostFrom/></ProtectedRoute>},
+    {path:"/posts/:num", element:<PostDetail/>}
+
 ];
 
 //export해줄 router 객체를 만든다.

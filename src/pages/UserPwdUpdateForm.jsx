@@ -1,9 +1,9 @@
 // src/pages/UserPwdUpdateForm.jsx
 import axios from "axios";
 import { useState } from "react";
-import { Alert, Button, Form } from "react-bootstrap";
+import { Alert, Breadcrumb, Button, Form } from "react-bootstrap";
 import { useDispatch } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 
 
@@ -122,6 +122,11 @@ function UserPwdUpdateForm() {
 
     return (
         <>
+            <Breadcrumb>
+                <Breadcrumb.Item href="/" as={Link} to="/" >Home</Breadcrumb.Item>
+                <Breadcrumb.Item href="/user/detail"  as={Link} to="/user/detail">User</Breadcrumb.Item>
+                <Breadcrumb.Item active>비밀번호 수정</Breadcrumb.Item>
+            </Breadcrumb>        
             <h1>비밀번호 수정 양식</h1>
             { error.show && <Alert variant="danger">{error.message}</Alert>}
             <Form onSubmit={handleSubmit}>
