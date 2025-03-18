@@ -3,6 +3,7 @@ import { Button, FloatingLabel, Form } from 'react-bootstrap';
 import { initEditor } from '../editor/SmartEditor';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import AlertModal from '../components/AlertModal';
 
 function PostFrom(props) {
     //SmartEditor에 작성한 내용을 textarea의 value로 넣어 줄 때 필요한 함수가 editorTool이다.
@@ -20,8 +21,15 @@ function PostFrom(props) {
     //경로 이동을 할 함수
     const navigate = useNavigate()
 
+    //알림 모달을 띄울지 말지 state로 관리하기기
+    const [modalShow, setModalShow] = useState(false);
+
     return (
         <>
+            <AlertModal show={modalShow} message="새글을 저장했습니다." onYes={()=>{
+                navigate("/posts");
+                setModalShow(false);
+            }}/>
             <h1>새 글 추가 양식 입니다.</h1>
             <Form>
                 <FloatingLabel label="제목" className="mb-3" controlId="title">
@@ -42,9 +50,8 @@ function PostFrom(props) {
                     //axios를 이용해서 api서버에 전송
                     axios.post("/posts", {title, content})
                     .then(res=>{
-                        alert("저장했습니다.");
-                        //글 목록보기로 이동
-                        navigate("/posts");
+                        //alert("저장했습니다."); //이거대신 모달을 사용!
+                        setModalShow(true);
                     })
                     .catch(error=>{
                         console.log(error);

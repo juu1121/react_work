@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { decodeToken } from 'jsontokens';
+import { jwtDecode } from 'jwt-decode';
 import React, { useState } from 'react';
 import { Alert, Button, FloatingLabel, Form, Modal } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
@@ -32,12 +32,12 @@ function LoginModal(props) {
             //토큰을 localStorage에 저장
             localStorage.token = res.data;
             //토큰을 디코딩해서 userName을 얻어온다.
-            const decoded=decodeToken(res.data.substring(7));
+            const decoded=jwtDecode(res.data.substring(7));
             console.log(decoded);
             //발행할 action
             const action={type:"USER_INFO", payload:{
-                userName:decoded.payload.sub,
-                role:decoded.payload.role
+                userName:decoded.sub,
+                role:decoded.role
             }};
             //액션 발행하기 
             dispatch(action);
