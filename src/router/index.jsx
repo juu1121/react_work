@@ -11,6 +11,7 @@ import UserPwdUpdateForm from "../pages/UserPwdUpdateForm";
 import PostFrom from "../pages/PostFrom";
 import PostDetail from "../pages/PostDetail";
 import PostUpdateForm from "../pages/PostUpdateForm";
+import Quiz from "../pages/Quiz";
 
 
 //임폴트해서 단독요소로 만들어둔다.
@@ -25,7 +26,8 @@ const routes=[
     {path:"/user/password/edit", element:<ProtectedRoute><UserPwdUpdateForm/></ProtectedRoute>},
     {path:"/posts/new", element:<ProtectedRoute><PostFrom/></ProtectedRoute>},
     {path:"/posts/:num", element:<PostDetail/>},
-    {path:"/posts/:num/edit", element:<ProtectedRoute><PostUpdateForm/></ProtectedRoute>}
+    {path:"/posts/:num/edit", element:<ProtectedRoute><PostUpdateForm/></ProtectedRoute>},
+    {path:"/quiz", element:<Quiz/>}
 
 ];
 
