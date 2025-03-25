@@ -55,7 +55,7 @@ function App(){
             <BsNavBar/>
             <div className="container" style={{marginTop:"60px"}}>
 
-
+            <div style={{ position: "relative", overflow: "hidden" }}>
                 <AnimatePresence mode="wait">
                         {/* key가 바뀌면 AnimatePresence가 페이지 전환으로 인식 */}
                         <motion.div
@@ -68,7 +68,7 @@ function App(){
                         <div>{currentOutlet}</div>
                         </motion.div>
                 </AnimatePresence>
-
+            </div>
 
                 {/* key가 바뀌면 AnimatePresence가 페이지 전환으로 인식 */}
                 {/* <div style={{ position: "relative", overflow: "hidden", height: "100vh"  }}>

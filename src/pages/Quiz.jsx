@@ -6,6 +6,7 @@ import MarkDown from 'react-markdown';
 // CodeMirror 를 사용하기 위해 3개의 페키지를 설치 하고 import 해야 한다 
 import CodeMirror from "@uiw/react-codemirror";
 import { javascript } from "@codemirror/lang-javascript";
+import { java } from '@codemirror/lang-java';
 import { dracula } from "@uiw/codemirror-theme-dracula";
 // MarkDown 에  코드 블럭을 prettify 하기 위해 
 import rehypeHighlight from "rehype-highlight";
@@ -14,6 +15,20 @@ import ConfirmModal from '../components/ConfirmModal';
 import { useNavigate } from 'react-router-dom';
 //import "highlight.js/styles/atom-one-dark.css"  // dark 테마 스타일 코드 
 import { AnimatePresence, motion } from "framer-motion";
+
+/*
+    -CodeMirror를 사용하기 위해 3개의 package가 설치 되어 있어야한다.
+    npm install @uiw/react-codemirror @codemirror/lang-javascript @uiw/codemirror-theme-dracula
+
+    -MarkDown을 사용하기 위해서 아래의 package가 설치 되어 있어야한다.
+    npm install react-markdown
+
+    -MarkDown을 출력할때 code를 이쁘게 출력하기 위한 package
+    npm install rehype-highlight
+
+    -transition 또는 animation을 화면 전환할떄 사용하기 위한 package
+    npm install framer-motion
+*/
 
 function Quiz(){
     const quizs = [
@@ -165,9 +180,9 @@ function Quiz(){
                 {show ? (
                 <motion.p
                     key="p1"
-                    initial={{ opacity: 0, y: 20 }} //초기값?
-                    animate={{ opacity: 1, y: 0 }}  //animate효과
-                    exit={{ opacity: 0, y: -20 }}   //사라질때 .. opacity: 투명도? //y는 y축으로 움직이는...
+                    initial={{ opacity: 0, y: 20 }} //시작상태//초기값?
+                    animate={{ opacity: 1, y: 0 }}  //끝상태 //animate효과
+                    exit={{ opacity: 0, y: -20 }}   //제거될될때 .. opacity: 투명도? //y는 y축으로 움직이는...
                     transition={{ duration: 0.3 }}  //얼마시간동안적용
                 >
                     p1
